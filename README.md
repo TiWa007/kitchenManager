@@ -18,7 +18,7 @@ The Kitchen Manager is a Java GUI application for kitchen account management. Th
 	- [MySQL Connector Java](https://jar-download.com/artifacts/mysql/mysql-connector-java)
 	- [JCalendar](http://www.java2s.com/Code/Jar/j/Downloadjcalendar14jar.htm)
 1. Set up MySQL connection in Java
-	- Open the file `src/DAO/DBConnection.java`, and change the values of `USERNAME` and `PASSWORD` to the username and password of your localhost database.
+	- Open the file `src/DAO/DBConnection.java`, and change the values of `USERNAME` and `PASSWORD` to the username and password of your localhost. In addition, create a database named `test_km` in your localhost.
 1. Run the GUI application in the file `src/GUI/KitchenManagerGUI.java`
 
 <img src= "Assets/ApplicationW1.JPG" height="400">
