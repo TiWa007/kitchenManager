@@ -123,7 +123,7 @@ public class ReminderEmail {
 					"\n";
 		}
 	
-		String message_account = "Our account balance is now " + ReciptDAO.getAccountBalance() +" DKK. \n" + 
+		String message_account = "Our account balance is now " + ReceiptDAO.getAccountBalance() +" DKK. \n" + 
 				"If you buy anything for the kitchen, please remember to notice the cashier and supply a receipt. \n\n"
 				+ "Yours sincerely, \n\n" + cashier.getMember().getName();
 		

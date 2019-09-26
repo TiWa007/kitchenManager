@@ -11,7 +11,7 @@ import java.util.List;
 import model.KitchenMember;
 import model.Receipt;
 
-public class ReciptDAO {
+public class ReceiptDAO {
 
 //	Table recipt
 	private static final String RECIPT_TABLE = "recipt";	

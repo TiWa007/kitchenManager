@@ -30,7 +30,7 @@ import com.toedter.calendar.JDateChooser;
 import model.KitchenMember;
 import model.Receipt;
 import DAO.KitchenMemberDAO;
-import DAO.ReciptDAO;
+import DAO.ReceiptDAO;
 
 import java.sql.SQLException;
 
@@ -73,7 +73,7 @@ public class PanelReceipt extends JPanel {
 	 */
 	public PanelReceipt() throws SQLException {
 		
-		reciptList = ReciptDAO.getReciptList();
+		reciptList = ReceiptDAO.getReciptList();
 		memberList = KitchenMemberDAO.getKitchenMemberList();
 		
 		panelRecipt = new JPanel();
@@ -103,7 +103,7 @@ public class PanelReceipt extends JPanel {
 		txtBalance = new JTextField();
 		txtBalance.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtBalance.setEditable(false);
-		Double balance = ReciptDAO.getAccountBalance();
+		Double balance = ReceiptDAO.getAccountBalance();
 		txtBalance.setText(balance.toString());
 		txtBalance.setBounds(250, 392, 86, 30);
 		panelRecipt.add(txtBalance);
@@ -206,7 +206,7 @@ public class PanelReceipt extends JPanel {
 					recipt.setDate(dateChooser.getDate());
 					recipt.setMember(getMember(Integer.parseInt(comboBox.getSelectedItem().toString())));	
 					try {
-						ReciptDAO.addRecipt(recipt);
+						ReceiptDAO.addRecipt(recipt);
 						updateAccountPanel();
 						updateAccountBalance();
 					} catch (SQLException e1) {
@@ -244,7 +244,7 @@ public class PanelReceipt extends JPanel {
 			    	List<Receipt> deleteList = new ArrayList<>();
 			    	deleteList.add(reciptList.get(selectedChoices));
 				    try {
-						ReciptDAO.deleteRecipt(deleteList);
+						ReceiptDAO.deleteRecipt(deleteList);
 						updateAccountPanel();
 						updateAccountBalance();
 					} catch (SQLException e2) {
@@ -391,7 +391,7 @@ public class PanelReceipt extends JPanel {
 							List<Receipt> editList = new ArrayList<>();
 					    	editList.add(selectedRecipt);
 						    try {
-								ReciptDAO.updateRecipt(editList);
+								ReceiptDAO.updateRecipt(editList);
 								updateAccountPanel();
 								updateAccountBalance();
 							} catch (SQLException e2) {
@@ -425,7 +425,7 @@ public class PanelReceipt extends JPanel {
 	
 	private Object[][] getAccountTable() throws SQLException {
 		
-		reciptList = ReciptDAO.getReciptList();
+		reciptList = ReceiptDAO.getReciptList();
 		int numOfRow = reciptList.size();
 		Object[][] data_Account = new Object[numOfRow][5];
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -443,7 +443,7 @@ public class PanelReceipt extends JPanel {
 	}
 
 	private void updateAccountBalance() throws SQLException {
-		Double balance = ReciptDAO.getAccountBalance();
+		Double balance = ReceiptDAO.getAccountBalance();
 		txtBalance.setText(balance.toString());
 	}
 	
@@ -451,7 +451,7 @@ public class PanelReceipt extends JPanel {
 		DefaultTableModel dm = (DefaultTableModel) table_Recipt.getModel();
 		dm.setDataVector(getAccountTable(), columns_Account);
 		dm.fireTableDataChanged();
-		txtBalance.setText(Double.toString(ReciptDAO.getAccountBalance()));
+		txtBalance.setText(Double.toString(ReceiptDAO.getAccountBalance()));
 	}
 
 	public JPanel getReciptPanel() {

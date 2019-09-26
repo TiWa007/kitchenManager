@@ -88,7 +88,7 @@ public class ExportExcelDAO {
 		Cell c0 = firstRow.createCell(0);
 		c0.setCellValue("Balance");	
 		Cell c1 = firstRow.createCell(1);
-		c1.setCellValue(ReciptDAO.getAccountBalance());
+		c1.setCellValue(ReceiptDAO.getAccountBalance());
 		
 		
 //		Second row, create Header
@@ -100,7 +100,7 @@ public class ExportExcelDAO {
 		}
 
 //		Kitchen Member rows
-		List<Receipt> reciptList = ReciptDAO.getReciptList();
+		List<Receipt> reciptList = ReceiptDAO.getReciptList();
 		for (int i = 0; i < reciptList.size(); i++) {
 			Row row = sheet.createRow(i + 2);
 //			Date

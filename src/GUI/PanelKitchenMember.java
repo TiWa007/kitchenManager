@@ -24,7 +24,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.TableColumn;
 
 import DAO.KitchenMemberDAO;
-import DAO.ReciptDAO;
+import DAO.ReceiptDAO;
 import model.KitchenMember;
 
 public class PanelKitchenMember extends JPanel {
@@ -105,7 +105,7 @@ public class PanelKitchenMember extends JPanel {
       balance.setFont(new Font("Tahoma", Font.PLAIN, 15));
       balance.setBounds(410, 400, 80, 30);
       balance.setEditable(false);
-      balance.setText(Double.toString(ReciptDAO.getAccountBalance()));
+      balance.setText(Double.toString(ReceiptDAO.getAccountBalance()));
       balance.setColumns(10);
       
       JLabel lblBalance = new JLabel("Account Balance:");
