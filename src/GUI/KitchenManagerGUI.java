@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import DAO.DataInit;
 import DAO.ExportExcelDAO;
 
 import java.awt.event.ActionEvent;
@@ -63,6 +64,9 @@ public class KitchenManagerGUI {
 	 * @throws SQLException 
 	 */
 	private void initialize() throws SQLException {
+		
+//		Initial the database test_km, insert data into the database.
+		DataInit.dataInit();
 		
 //		Frame
 		frame = new JFrame();
