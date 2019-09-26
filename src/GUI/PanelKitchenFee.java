@@ -78,7 +78,7 @@ public class PanelKitchenFee extends JPanel {
 		panelKitchenFee.setBounds(0, 0, 687, 496);
 		panelKitchenFee.setLayout(null);
 		
-		JLabel lblKitchenFeeTable = new JLabel("Kitchen Fee Table");
+		JLabel lblKitchenFeeTable = new JLabel("Kitchen Fee:");
 		lblKitchenFeeTable.setBounds(100, 40, 300, 50);
 		panelKitchenFee.add(lblKitchenFeeTable);
 		lblKitchenFeeTable.setFont(new Font("Tahoma", Font.PLAIN, 28));

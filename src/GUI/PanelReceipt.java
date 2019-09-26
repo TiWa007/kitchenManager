@@ -28,13 +28,13 @@ import java.awt.event.ActionEvent;
 import com.toedter.calendar.JDateChooser;
 
 import model.KitchenMember;
-import model.Recipt;
+import model.Receipt;
 import DAO.KitchenMemberDAO;
 import DAO.ReciptDAO;
 
 import java.sql.SQLException;
 
-public class PanelRecipt extends JPanel {
+public class PanelReceipt extends JPanel {
 
 	/**
 	 * 
@@ -44,7 +44,7 @@ public class PanelRecipt extends JPanel {
 	private JPanel panelRecipt;
 	private JTable table_Recipt;
 	private JTextField txtBalance;
-	private List<Recipt> reciptList;
+	private List<Receipt> reciptList;
 	private List<KitchenMember> memberList;
 	/**
 	 * Launch the application.
@@ -53,7 +53,7 @@ public class PanelRecipt extends JPanel {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PanelRecipt window = new PanelRecipt();
+					PanelReceipt window = new PanelReceipt();
 					JFrame frame = new JFrame();					
 					frame.setBounds(100, 100, 700, 600);
 					frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,7 +71,7 @@ public class PanelRecipt extends JPanel {
 	 * Create the panel.
 	 * @throws SQLException 
 	 */
-	public PanelRecipt() throws SQLException {
+	public PanelReceipt() throws SQLException {
 		
 		reciptList = ReciptDAO.getReciptList();
 		memberList = KitchenMemberDAO.getKitchenMemberList();
@@ -90,7 +90,7 @@ public class PanelRecipt extends JPanel {
 		
 		scrollPane_Account.setViewportView(table_Recipt);
 		
-		JLabel lblAccountDetail = new JLabel("Account Detail:");
+		JLabel lblAccountDetail = new JLabel("Receipt:");
 		lblAccountDetail.setFont(new Font("Tahoma", Font.PLAIN, 28));
 		lblAccountDetail.setBounds(100, 30, 300, 50);
 		panelRecipt.add(lblAccountDetail);
@@ -196,7 +196,7 @@ public class PanelRecipt extends JPanel {
 				int result = JOptionPane.showConfirmDialog(panelRecipt, reciptPanel,
 						"Recipt Information", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
 				if (result == JOptionPane.OK_OPTION) {
-					Recipt recipt = new Recipt();
+					Receipt recipt = new Receipt();
 					double amount = Double.parseDouble(textField_amount.getText());
 					if (comboBox_1.getSelectedItem().equals("-")) {
 						amount = -amount;
@@ -228,7 +228,7 @@ public class PanelRecipt extends JPanel {
 				String[] choices = new String[reciptList.size()];
 				HashMap<String, Integer> reciptMap = new HashMap<>();
 				for (int i = 0; i < reciptList.size(); i++) {
-					Recipt recipt = reciptList.get(i);
+					Receipt recipt = reciptList.get(i);
 					choices[i] = format.format(recipt.getDate()) + ", " + recipt.getMember().getRoom() + " " + recipt.getMember().getName() 
 							+ ", " + recipt.getAmount() + ", " + recipt.getComment();
 					reciptMap.put(choices[i], i);
@@ -241,7 +241,7 @@ public class PanelRecipt extends JPanel {
 
 			    if (input != null) {
 			    	int selectedChoices = reciptMap.get(input);
-			    	List<Recipt> deleteList = new ArrayList<>();
+			    	List<Receipt> deleteList = new ArrayList<>();
 			    	deleteList.add(reciptList.get(selectedChoices));
 				    try {
 						ReciptDAO.deleteRecipt(deleteList);
@@ -264,7 +264,7 @@ public class PanelRecipt extends JPanel {
 				String[] choices = new String[reciptList.size()];
 				HashMap<String, Integer> reciptMap = new HashMap<>();
 				for (int i = 0; i < reciptList.size(); i++) {
-					Recipt recipt = reciptList.get(i);
+					Receipt recipt = reciptList.get(i);
 					choices[i] = recipt.getDate().toString() + ", " + recipt.getMember().getRoom() + " " + recipt.getMember().getName() 
 							+ ", " + recipt.getAmount() + ", " + recipt.getComment();
 					reciptMap.put(choices[i], i);
@@ -277,7 +277,7 @@ public class PanelRecipt extends JPanel {
 
 			    if (input != null) {
 			    	int selectedChoices = reciptMap.get(input);
-			    	Recipt selectedRecipt = reciptList.get(selectedChoices);
+			    	Receipt selectedRecipt = reciptList.get(selectedChoices);
 			    	
 			    	JPanel reciptPanel = new JPanel();
 					
@@ -388,7 +388,7 @@ public class PanelRecipt extends JPanel {
 						}	
 						
 						if (isChanged) {
-							List<Recipt> editList = new ArrayList<>();
+							List<Receipt> editList = new ArrayList<>();
 					    	editList.add(selectedRecipt);
 						    try {
 								ReciptDAO.updateRecipt(editList);
@@ -430,7 +430,7 @@ public class PanelRecipt extends JPanel {
 		Object[][] data_Account = new Object[numOfRow][5];
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		for (int i = 0; i < numOfRow; i++) {
-			Recipt recipt = reciptList.get(i);
+			Receipt recipt = reciptList.get(i);
 			KitchenMember mem = recipt.getMember();
 			data_Account[i][0] = format.format(recipt.getDate());
 			data_Account[i][1] = mem.getRoom();

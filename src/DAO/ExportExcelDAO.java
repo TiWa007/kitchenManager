@@ -18,7 +18,7 @@ import model.Cashier;
 import model.KitchenFeeMonth;
 import model.KitchenFeeRecipt;
 import model.KitchenMember;
-import model.Recipt;
+import model.Receipt;
 
 public class ExportExcelDAO {
 	private static final String MEMBER_SHEET = "KitchenMember";
@@ -100,7 +100,7 @@ public class ExportExcelDAO {
 		}
 
 //		Kitchen Member rows
-		List<Recipt> reciptList = ReciptDAO.getReciptList();
+		List<Receipt> reciptList = ReciptDAO.getReciptList();
 		for (int i = 0; i < reciptList.size(); i++) {
 			Row row = sheet.createRow(i + 2);
 //			Date

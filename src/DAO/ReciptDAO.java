@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.KitchenMember;
-import model.Recipt;
+import model.Receipt;
 
 public class ReciptDAO {
 
@@ -53,12 +53,12 @@ public class ReciptDAO {
 	}
 	
 //	Get Recipt List
-	public static List<Recipt> getReciptList() throws SQLException {
+	public static List<Receipt> getReciptList() throws SQLException {
 		String sqlGetMember = "SELECT * FROM " + "`" + RECIPT_TABLE + "` " + "ORDER BY " + COL_DATE + " DESC";
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		List<Recipt> reciptList = null;
+		List<Receipt> reciptList = null;
 		try {
 			conn = DBConnection.getConnection();
 			stmt = conn.prepareStatement(sqlGetMember, 
@@ -76,11 +76,11 @@ public class ReciptDAO {
 		return reciptList;
 	}
 	
-	private static List<Recipt> getReciptFromResultSet(ResultSet rs) throws SQLException {
-		List<Recipt> reciptList = new ArrayList<>();
+	private static List<Receipt> getReciptFromResultSet(ResultSet rs) throws SQLException {
+		List<Receipt> reciptList = new ArrayList<>();
 		rs.beforeFirst();
 		while (rs.next()) {		
-			Recipt recipt = new Recipt();
+			Receipt recipt = new Receipt();
 			recipt.setId(rs.getInt(COL_ID));
 			recipt.setDate(rs.getDate(COL_DATE));
 			recipt.setAmount(rs.getDouble(COL_AMOUNT));
@@ -95,7 +95,7 @@ public class ReciptDAO {
 	}
 	
 //	Add
-	public static void addRecipt(List<Recipt> reciptList) throws SQLException {
+	public static void addRecipt(List<Receipt> reciptList) throws SQLException {
 		String sqlAddRecipt = "INSERT INTO " + "`" + RECIPT_TABLE + "` "
 				+ "(`member_id`, `date`, `amount`, `comment`) "
 				+ "VALUES (?, ?, ?, ?)";
@@ -106,7 +106,7 @@ public class ReciptDAO {
 		try {
 			conn = DBConnection.getConnection();
 			stmt = conn.prepareStatement(sqlAddRecipt);
-			for (Recipt recipt : reciptList) {
+			for (Receipt recipt : reciptList) {
 				stmt.setInt(1, recipt.getMember().getId());
 				if (recipt.getDate() != null) {
 					stmt.setDate(2, new java.sql.Date(recipt.getDate().getTime()));
@@ -125,7 +125,7 @@ public class ReciptDAO {
 		}
 	}
 	
-	public static void addRecipt(Recipt recipt) throws SQLException {
+	public static void addRecipt(Receipt recipt) throws SQLException {
 		String sqlAddRecipt = "INSERT INTO " + "`" + RECIPT_TABLE + "` "
 				+ "(`member_id`, `date`, `amount`, `comment`) "
 				+ "VALUES (?, ?, ?, ?)";
@@ -154,7 +154,7 @@ public class ReciptDAO {
 	}
 	
 // Update
-	public static void updateRecipt(List<Recipt> reciptList) throws SQLException {
+	public static void updateRecipt(List<Receipt> reciptList) throws SQLException {
 		String sqlUpdateRecipt = "UPDATE " + "`" + RECIPT_TABLE + "` "
 				+ "SET `member_id` = ?, `date` = ?, `amount` = ?, `comment` = ? "
 				+ "WHERE (" + COL_ID + " = ?)";
@@ -165,7 +165,7 @@ public class ReciptDAO {
 		try {
 			conn = DBConnection.getConnection();
 			stmt = conn.prepareStatement(sqlUpdateRecipt);
-			for (Recipt recipt : reciptList) {
+			for (Receipt recipt : reciptList) {
 				stmt.setInt(1, recipt.getMember().getId());
 				if (recipt.getDate() != null) {
 					stmt.setDate(2, new java.sql.Date(recipt.getDate().getTime()));
@@ -186,7 +186,7 @@ public class ReciptDAO {
 	}
 	
 //	Delete
-	public static void deleteRecipt(List<Recipt> reciptList) throws SQLException {
+	public static void deleteRecipt(List<Receipt> reciptList) throws SQLException {
 		String sqlDeleteRecipt = "DELETE FROM " + "`" + RECIPT_TABLE + "` "
 				+ "WHERE (" + COL_ID + " = ?)";
 		
@@ -196,7 +196,7 @@ public class ReciptDAO {
 		try {
 			conn = DBConnection.getConnection();
 			stmt = conn.prepareStatement(sqlDeleteRecipt);
-			for (Recipt recipt : reciptList) {
+			for (Receipt recipt : reciptList) {
 				stmt.setInt(1, recipt.getId());
 				stmt.executeUpdate();
 			}

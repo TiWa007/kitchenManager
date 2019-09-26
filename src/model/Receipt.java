@@ -2,18 +2,18 @@ package model;
 
 import java.util.Date;
 
-public class Recipt {
+public class Receipt {
 	private Integer id;
 	private Date date;
 	private Double amount;
 	private KitchenMember member;
 	private String comment;
 	
-	public Recipt() {
+	public Receipt() {
 		
 	}
 	
-	public Recipt(Integer id, Date date, Double amount, KitchenMember member, String comment) {
+	public Receipt(Integer id, Date date, Double amount, KitchenMember member, String comment) {
 		super();
 		this.id = id;
 		this.date = date;

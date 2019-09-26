@@ -208,17 +208,17 @@ public class KitchenManagerGUI {
       });
       mnEmail.add(mntmSendEmailTo_1);
       
-      JMenu mnAccountmanager = new JMenu("Recipt Manager");
+      JMenu mnAccountmanager = new JMenu("Receipt Manager");
       mnAccountmanager.setFont(new Font("Segoe UI", Font.PLAIN, 18));
       menuBar.add(mnAccountmanager);
       
-      JMenuItem mntmPayment = new JMenuItem("Recipt");
+      JMenuItem mntmPayment = new JMenuItem("Receipt");
       mntmPayment.setFont(new Font("Segoe UI", Font.PLAIN, 15));
       mntmPayment.addActionListener(new ActionListener() {
       	public void actionPerformed(ActionEvent e) {
       		if (!panelRecipt.isShowing()) {
 				try {
-					PanelRecipt panelReciptTemp = new PanelRecipt();
+					PanelReceipt panelReciptTemp = new PanelReceipt();
 					panelRecipt = panelReciptTemp.getReciptPanel();
 					switchPanels(panelRecipt);
 				} catch (SQLException e1) {
