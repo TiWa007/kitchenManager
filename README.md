@@ -1,9 +1,6 @@
 # Kitchen Manager
 The Kitchen Manager is a Java GUI application for kitchen account management. The features includes the management of member information, receipt and kitchen monthly fee, and sending reminder email of monthly kitchen fee. 
- 
-<img src= "Assets/ApplicationW1.JPG" height="300">
-<img src= "Assets/ApplicationW2.JPG" height="300">
-<img src= "Assets/ApplicationW3.JPG" height="300">
+
 
 ## Prerequisites
 
@@ -23,6 +20,10 @@ The Kitchen Manager is a Java GUI application for kitchen account management. Th
 1. Set up MySQL connection in Java
 	- Open the file `src/DAO/DBConnection.java`, and change the values of `USERNAME` and `PASSWORD` to the username and password of your localhost database.
 1. Run the GUI application in the file `src/GUI/KitchenManagerGUI.java`
+
+<img src= "Assets/ApplicationW1.JPG" height="400">
+<img src= "Assets/ApplicationW2.JPG" height="400">
+<img src= "Assets/ApplicationW3.JPG" height="400">
 
 ## Built With
 
