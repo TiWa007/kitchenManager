@@ -32,4 +32,4 @@ The Kitchen Manager is a Java GUI application for kitchen account management. Th
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the [MIT License](LICENSE).
