@@ -24,6 +24,7 @@ The Kitchen Manager is a Java GUI application for kitchen account management. Th
 <img src= "Assets/ApplicationW1.JPG" height="400">
 <img src= "Assets/ApplicationW2.JPG" height="400">
 <img src= "Assets/ApplicationW3.JPG" height="400">
+<img src= "Assets/kitchenManager.png" height="400">
 
 ## Built With
 
