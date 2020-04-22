@@ -28,7 +28,7 @@ The Kitchen Manager is a Java GUI application for kitchen account management. Th
 
 ## Built With
 
-* [WinderBuilder](https://www.eclipse.org/windowbuilder/) - Java GUI designer
+* [WindowBuilder](https://www.eclipse.org/windowbuilder/) - Java GUI designer
 * [MySQL](https://www.mysql.com/) - Database management
 
 ## License
